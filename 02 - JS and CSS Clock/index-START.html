@@ -62,12 +62,25 @@
       background:black;
       position: absolute;
       top:50%;
+      transform-origin: 100%;
+      transition: all 0.05s;
+      transition-timing-function: ease-in-out;
     }
 
   </style>
 
   <script>
+    function setDate(){
+      let date = new Date();
+      let hours = 90 + ((date.getHours() / 12) * 360);
+      let minutes = 90 + ((date.getMinutes() /60) * 360);
+      let seconds = 90 + ((date.getSeconds() /60) * 360);
+      document.getElementsByClassName("second-hand")[0].style.transform="rotate("+seconds+"deg)";
+      document.getElementsByClassName("min-hand")[0].style.transform="rotate("+minutes+"deg)";
+      document.getElementsByClassName("hour-hand")[0].style.transform="rotate("+hours+"deg)";
+    }
 
+    setInterval(setDate, 1000);
 
   </script>
 </body>
